@@ -7,6 +7,6 @@ export class WorkshopPipelineStage extends Stage {
   constructor(scope: Construct, id: string, props?: StageProps) {
     super(scope, id, props);
 
-    new AwsCdkWorkshopShivangiCheckStack(this, "WebService");
+    new AwsCdkWorkshopShivangiCheckStack(this, "WebServiceSACheck");
   }
 }
