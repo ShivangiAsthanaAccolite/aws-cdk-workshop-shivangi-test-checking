@@ -2,7 +2,7 @@ import * as apigw from "aws-cdk-lib/aws-apigateway";
 import * as cdk from "aws-cdk-lib";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 
-import { Stack, StackProps } from "aws-cdk-lib";
+import { CfnOutput, Stack, StackProps } from "aws-cdk-lib";
 
 import { Construct } from "constructs";
 import { HitCounter } from "./hitcounter";
@@ -36,11 +36,11 @@ export class AwsCdkWorkshopShivangiCheckStack extends Stack {
       sortBy: "-hits",
     });
 
-    this.hcEndpoint = new cdk.CfnOutput(this, "GatewayUrl", {
+    this.hcEndpoint = new CfnOutput(this, "GatewayUrl", {
       value: gateway.url,
     });
 
-    this.hcViewerUrl = new cdk.CfnOutput(this, "TableViewerUrl", {
+    this.hcViewerUrl = new CfnOutput(this, "TableViewerUrl", {
       value: tv.endpoint,
     });
   }
