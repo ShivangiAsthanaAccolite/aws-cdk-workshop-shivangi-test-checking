@@ -9,7 +9,7 @@ const app = new cdk.App();
 
 new WorkshopPipelineStack(app, "CdkWorkshopPipelineStackSACheck", {
   env: {
-    account: "590376488337",
-    region: "us-east-1",
+    account: process.env.account,
+    region: process.env.region,
   },
 });
