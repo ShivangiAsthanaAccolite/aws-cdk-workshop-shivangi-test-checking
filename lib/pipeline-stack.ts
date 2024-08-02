@@ -37,7 +37,7 @@ export class WorkshopPipelineStack extends cdk.Stack {
 
     deployStage.addPost(
       new CodeBuildStep("TestViewerEndpoint", {
-        projectName: "TestViewerEndpoint",
+        projectName: "TestViewerEndpointShivangi",
         envFromCfnOutputs: {
           ENDPOINT_URL: deploy.hcViewerUrl,
         },
@@ -45,7 +45,7 @@ export class WorkshopPipelineStack extends cdk.Stack {
       }),
 
       new CodeBuildStep("TestAPIGatewayEndpoint", {
-        projectName: "TestAPIGatewayEndpoint",
+        projectName: "TestAPIGatewayEndpointShivangi",
         envFromCfnOutputs: {
           ENDPOINT_URL: deploy.hcEndpoint,
         },
