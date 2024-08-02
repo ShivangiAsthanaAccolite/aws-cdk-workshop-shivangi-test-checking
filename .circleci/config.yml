@@ -16,10 +16,6 @@ jobs:
           region: AWS_DEFAULT_REGION
       - checkout
       - run:
-          name: "Install AWS CDK"
-          command: |
-            npm install -g aws-cdk
-      - run:
           name: "Build CDK App"
           command: |
             npm install
@@ -31,7 +27,7 @@ jobs:
       - run:
           name: "cdk_deploy"
           command: |
-            cdk deploy --require-approval never
+            command: account=${AWS_ACCOUNT_ID} region=${AWS_DEFAULT_REGION} npm run ci_deploy
 workflow:
   cdk-deployment:
     jobs:
