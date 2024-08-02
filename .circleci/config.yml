@@ -16,6 +16,10 @@ jobs:
           region: AWS_DEFAULT_REGION
       - checkout
       - run:
+          name: "Install AWS CDK"
+          command: |
+            npm install -g aws-cdk
+      - run:
           name: "Build CDK App"
           command: |
             npm install
