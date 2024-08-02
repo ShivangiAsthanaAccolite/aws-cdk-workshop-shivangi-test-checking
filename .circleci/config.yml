@@ -18,7 +18,7 @@ jobs:
       - run:
           name: "Install AWS CDK"
           command: |
-            npm install -g aws-cdk
+            sudo npm install -g aws-cdk
       - run:
           name: "Verify CDK Installation"
           command: |
