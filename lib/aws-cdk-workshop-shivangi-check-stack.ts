@@ -9,8 +9,8 @@ import { HitCounter } from "./hitcounter";
 import { TableViewer } from "cdk-dynamo-table-viewer";
 
 export class AwsCdkWorkshopShivangiCheckStack extends Stack {
-  public readonly hcViewerUrl: cdk.CfnOutput;
-  public readonly hcEndpoint: cdk.CfnOutput;
+  public readonly hcViewerUrl: CfnOutput;
+  public readonly hcEndpoint: CfnOutput;
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
