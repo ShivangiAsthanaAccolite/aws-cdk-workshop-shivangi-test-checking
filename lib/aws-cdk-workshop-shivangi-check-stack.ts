@@ -2,21 +2,21 @@ import * as apigw from "aws-cdk-lib/aws-apigateway";
 import * as cdk from "aws-cdk-lib";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 
-import { CfnOutput, Stack, StackProps } from "aws-cdk-lib";
+import { Stack, StackProps } from "aws-cdk-lib";
 
 import { Construct } from "constructs";
 import { HitCounter } from "./hitcounter";
 import { TableViewer } from "cdk-dynamo-table-viewer";
 
 export class AwsCdkWorkshopShivangiCheckStack extends Stack {
-  public readonly hcViewerUrl: CfnOutput;
-  public readonly hcEndpoint: CfnOutput;
+  public readonly hcViewerUrl: cdk.CfnOutput;
+  public readonly hcEndpoint: cdk.CfnOutput;
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     // defines an AWS Lambda resource
     const hello = new lambda.Function(this, "HelloHandler", {
-      runtime: lambda.Runtime.NODEJS_18_X, // execution environment
+      runtime: lambda.Runtime.NODEJS_16_X, // execution environment
       code: lambda.Code.fromAsset("lambda"), // code loaded from "lambda" directory
       handler: "hello.handler", // file is "hello", function is "handler"
     });
@@ -36,11 +36,11 @@ export class AwsCdkWorkshopShivangiCheckStack extends Stack {
       sortBy: "-hits",
     });
 
-    this.hcEndpoint = new CfnOutput(this, "GatewayUrl", {
+    this.hcEndpoint = new cdk.CfnOutput(this, "GatewayUrl", {
       value: gateway.url,
     });
 
-    this.hcViewerUrl = new CfnOutput(this, "TableViewerUrl", {
+    this.hcViewerUrl = new cdk.CfnOutput(this, "TableViewerUrl", {
       value: tv.endpoint,
     });
   }

@@ -41,10 +41,7 @@ export class WorkshopPipelineStack extends cdk.Stack {
         envFromCfnOutputs: {
           ENDPOINT_URL: deploy.hcViewerUrl,
         },
-        commands: [
-          'echo "Testing hcViewerUrl : $ENDPOINT_URL"',
-          "curl -Ssf $ENDPOINT_URL",
-        ],
+        commands: ["curl -Ssf $ENDPOINT_URL"],
       }),
 
       new CodeBuildStep("TestAPIGatewayEndpoint", {

@@ -1,5 +1,4 @@
-const { DynamoDB } = require('@aws-sdk/client-dynamodb');
-const { Lambda } = require('@aws-sdk/client-lambda');
+const { DynamoDB, Lambda } = require('aws-sdk');
 
 exports.handler = async function (event) {
     console.log("request:", JSON.stringify(event, undefined, 2));
@@ -14,13 +13,13 @@ exports.handler = async function (event) {
         Key: { path: { S: event.path } },
         UpdateExpression: 'ADD hits :incr',
         ExpressionAttributeValues: { ':incr': { N: '1' } }
-    });
+    }).promise();
 
     // call downstream function and capture response
     const resp = await lambda.invoke({
         FunctionName: process.env.DOWNSTREAM_FUNCTION_NAME,
         Payload: JSON.stringify(event)
-    });
+    }).promise();
 
     console.log('downstream response:', JSON.stringify(resp, undefined, 2));
 
