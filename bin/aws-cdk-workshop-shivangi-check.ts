@@ -8,7 +8,7 @@ import { AwsCdkWorkshopShivangiCheckStack } from "../lib/aws-cdk-workshop-shivan
 const app = new cdk.App();
 // new WorkshopPipelineStack(app, "CdkWorkshopPipelineStackSACheck");
 
-new AwsCdkWorkshopShivangiCheckStack(app, "CdkWorkshopPipelineStackSACheck", {
+new AwsCdkWorkshopShivangiCheckStack(app, "AwsCdkWorkshopShivangiCheckStack", {
   env: {
     account: process.env.account,
     region: process.env.region,
