@@ -26,7 +26,8 @@ jobs:
             npm test
       - run:
           name: "cdk_deploy"
-          command: account=${AWS_ACCOUNT_ID} region=${AWS_DEFAULT_REGION} npm run ci_deploy
+          command: |
+            cdk deploy --require-approval never
 workflow:
   cdk-deployment:
     jobs:
